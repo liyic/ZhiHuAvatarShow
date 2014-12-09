@@ -1,0 +1,25 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.moqi.android.xposed.zhihu"
+    android:versionCode="8"
+    android:versionName="1.0.8" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="21" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <meta-data
+            android:name="xposedmodule"
+            android:value="true" />
+        <meta-data
+            android:name="xposedminversion"
+            android:value="42+" />
+        <meta-data
+            android:name="xposeddescription"
+            android:value="查看知乎用户头像大图；嘘。。。别人管理员发现" />
+    </application>
+
+</manifest>
