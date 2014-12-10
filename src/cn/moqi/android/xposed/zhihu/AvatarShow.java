@@ -51,7 +51,11 @@ public class AvatarShow implements IXposedHookLoadPackage {
 							int _index=avatarUrl.lastIndexOf('_');
 							String bigURL=_index!=-1?avatarUrl.substring(0, _index)+avatarUrl.substring(_index+2):avatarUrl;
 							XposedHelpers.callMethod(param.thisObject, "setTag", tagKey,bigURL);
-							XposedHelpers.callMethod(param.thisObject, "setOnClickListener",show);
+							//避免覆盖原有事件
+							Object listenerInfo = XposedHelpers.getObjectField(param.thisObject, "mListenerInfo");
+							if(listenerInfo==null || XposedHelpers.getObjectField(listenerInfo,"mOnClickListener")==null){
+								XposedHelpers.callMethod(param.thisObject, "setOnClickListener",show);
+							}
 						}
 					}
 				}
